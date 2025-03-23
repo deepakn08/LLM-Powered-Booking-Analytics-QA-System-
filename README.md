@@ -17,14 +17,14 @@ Developed a system that processes hotel booking data, extracts insights, and ena
 ## Working 
 1. **Generating the Analytics Report** 📰
    - Ploting the distribution of the insights from the data like Revenue Trend, Geographical Distribution, Lead Time Distribution.
-   - Creating Plot using **Fast-API**. 
+   - Creating Reports using **Fast-API** Interface. 
 
 3. **Question Answering from the CSV data** ✍️  
    - Question Answering based on insights of the question
    - Generating the user query into **SQL-Query**.
    - Using this query to fetch data from **SQL-Database**.
    - Uses **Groq API** to generate concise, structured summaries.  
-   - Performing Question Answering using **Fast-API**.  
+   - Generating the UI using **Fast-API**.  
 ---
 
 ## Run Locally  

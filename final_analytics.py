@@ -10,11 +10,12 @@ import io
 from enum import Enum
 
 
-data = pd.read_csv(r"C:\Users\nailw\OneDrive\Desktop\Intern_Assignement\hotel_bookings.csv")
+path = ""
+data = pd.read_csv(path)
 
-
-## Dropping the booking that have not any country assigned.
+# Dropping the booking that have not any country assigned.
 data = data.dropna(subset=["country"])
+
 
 def convert_datetime(data):
     data['arrival_date'] = data[["arrival_date_year", "arrival_date_month", "arrival_date_day_of_month"]].astype(str).agg("-".join, axis=1)
@@ -42,12 +43,12 @@ data_processed = calc_revenue(data_processed)
 
 data_processed
 
-
-# ## Cancellation Rate % of total booking
+# Cancellation Rate % of total booking
 
 
 def canc_rate(processed_data):
     return (processed_data['is_canceled'].sum()/len(data))*100
+
 
 def plot_is_cancelled(processed_data):
     return sns.countplot(x=processed_data['is_canceled'])
@@ -62,15 +63,12 @@ def cancel_chann_distribution(processed_data):
     plt.title("Booking Cancellation Distribution")
     return plt
 
-
 # Majority of the cancellationa re from TA/TO distribution channel. Which contribute total 90.8% of total cancellations.
-
 
 # From total booking 37.04 % of the booking got cancelled. It contains non of the missing values.
 
 
-# ## Revenue trends over time
-
+# Revenue trends over time
 
 def revenue_trend(data):
     df = data.loc[data['is_canceled']==0]
@@ -85,9 +83,7 @@ def revenue_trend(data):
 
     return plt
 
-
-# ## Geographical Distribution of the people doing booking.
-
+# Geographical Distribution of the people doing booking.
 
 def geo_distribution(data):
     data['country'].isna().sum()
@@ -117,8 +113,7 @@ def geo_distribution(data):
     return fig 
 
 
-# ## Observing Lead Time Distribution
-
+# Observing Lead Time Distribution
 
 def lead_distribution(data):
     df = data['lead_time'].value_counts()
@@ -138,10 +133,9 @@ def lead_distribution(data):
 # Most of the booking have lead time of less than 100 days among them majority of the booking have lead time of 0 days.
 
 
-# ## Building Fast API
+# Building Fast API
 
-
-nest_asyncio.apply()
+# nest_asyncio.apply()
 
 
 app = FastAPI()
@@ -196,6 +190,3 @@ async def get_plot(plot: PlotType):
 
 
 uvicorn.run(app, host="127.0.0.1", port=8080, log_level="info")
-
-
-

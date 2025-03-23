@@ -1,0 +1,17 @@
+pandas
+numpy
+matplotlib
+seaborn
+ipykernel
+langchain
+langchain_community
+sentence-transformers
+faiss-cpu
+huggingface_hub
+langchain_groq
+langchain_huggingface
+langchain_experimental
+dotenv
+fastapi
+uvicorn
+nest_asyncio

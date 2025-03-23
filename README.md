@@ -57,3 +57,11 @@ final_rag.py
 This will start the **API for question answering on Hotel Booking Data** that will fetch, summarize and plot of the analytics report.
 
 ---
+### Results
+
+![Screenshot 2025-03-24 022211](https://github.com/user-attachments/assets/fce19dfd-db17-43e3-8d48-f3537402b724)
+![Screenshot 2025-03-24 022159](https://github.com/user-attachments/assets/4ae41e68-c11a-4154-a6d3-68c6f165a851)
+![Screenshot 2025-03-24 022412](https://github.com/user-attachments/assets/286dd473-fef3-4704-b344-b7d89ce0f00e)
+![Screenshot 2025-03-24 022419](https://github.com/user-attachments/assets/96d8fa70-7fc2-4e0d-8d95-1d7c059bf882)
+![Screenshot 2025-03-24 022441](https://github.com/user-attachments/assets/37435485-0f98-4b3a-bac7-341f5dd80a21)
+![Screenshot 2025-03-24 022450](https://github.com/user-attachments/assets/23e9fdf4-e1b8-4f1b-b51f-31285d42d849)

@@ -46,11 +46,14 @@ pip install -r requirements.txt
 ### Set up environment variables  
 Create a `.env` file and add necessary API keys and configurations (e.g., **Groq API key**).  
 
-### Start the agent on streamlit webapp
+### Start the analytics api
+```bash
+final_analytics.py
+```
+### Start the rag api
 ```bash
 final_rag.py
-final_analytics.py
-```  
+``` 
 This will start the **API for question answering on Hotel Booking Data** that will fetch, summarize and plot of the analytics report.
 
 ---

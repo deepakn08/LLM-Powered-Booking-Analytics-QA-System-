@@ -6,9 +6,11 @@ Developed a system that processes hotel booking data, extracts insights, and ena
 ---
 
 ## Features  
-✅ Generating the analytics reports on the basis of the question asked.
-✅ Giving the insights from the data on the basis of the CSV file. 
-✅ Implemented the fast-api at the end.
+   ✅ Generating the analytics reports on the basis of the question asked.
+   
+   ✅ Giving the insights from the data on the basis of the CSV file. 
+   
+   ✅ Implemented the fast-api at the end.
 ---
 ## Working 
 1. **Generating the Analytics Report** 📰

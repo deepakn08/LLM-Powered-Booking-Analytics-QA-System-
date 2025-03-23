@@ -1,4 +1,3 @@
-# %%
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -10,14 +9,13 @@ from fastapi.responses import StreamingResponse
 import io
 from enum import Enum
 
-# %%
+
 data = pd.read_csv(r"C:\Users\nailw\OneDrive\Desktop\Intern_Assignement\hotel_bookings.csv")
 
-# %%
+
 ## Dropping the booking that have not any country assigned.
 data = data.dropna(subset=["country"])
 
-# %%
 def convert_datetime(data):
     data['arrival_date'] = data[["arrival_date_year", "arrival_date_month", "arrival_date_day_of_month"]].astype(str).agg("-".join, axis=1)
     data.drop(columns=['arrival_date_year','arrival_date_month','arrival_date_day_of_month'],inplace=True)
@@ -29,33 +27,32 @@ def convert_datetime(data):
     
     return data
 
-# %%
+
 data_processed = convert_datetime(data)
 
-# %%
+
 def calc_revenue(data_processed):
     data_processed['night_stay'] = (data_processed['checkout_date']-data_processed['arrival_date']).dt.days
     data_processed['Total_revenue'] = data_processed['adr']*data_processed['night_stay']
     return data_processed
 
-# %%
+
 data_processed = calc_revenue(data_processed)
 
-# %%
+
 data_processed
 
-# %% [markdown]
+
 # ## Cancellation Rate % of total booking
 
-# %%
+
 def canc_rate(processed_data):
     return (processed_data['is_canceled'].sum()/len(data))*100
 
-# %%
 def plot_is_cancelled(processed_data):
     return sns.countplot(x=processed_data['is_canceled'])
 
-# %%
+
 def cancel_chann_distribution(processed_data):
     sizes = processed_data.loc[processed_data['is_canceled'] == 1]['distribution_channel'].value_counts()
     labels = processed_data.loc[processed_data['is_canceled'] == 1]['distribution_channel'].unique()
@@ -65,16 +62,16 @@ def cancel_chann_distribution(processed_data):
     plt.title("Booking Cancellation Distribution")
     return plt
 
-# %% [markdown]
+
 # Majority of the cancellationa re from TA/TO distribution channel. Which contribute total 90.8% of total cancellations.
 
-# %% [markdown]
+
 # From total booking 37.04 % of the booking got cancelled. It contains non of the missing values.
 
-# %% [markdown]
+
 # ## Revenue trends over time
 
-# %%
+
 def revenue_trend(data):
     df = data.loc[data['is_canceled']==0]
     daily_revenue_trend = df.groupby("checkout_date")["Total_revenue"].sum()
@@ -88,10 +85,10 @@ def revenue_trend(data):
 
     return plt
 
-# %% [markdown]
+
 # ## Geographical Distribution of the people doing booking.
 
-# %%
+
 def geo_distribution(data):
     data['country'].isna().sum()
     df = data['country'].value_counts()
@@ -119,10 +116,10 @@ def geo_distribution(data):
     plt.tight_layout()
     return fig 
 
-# %% [markdown]
+
 # ## Observing Lead Time Distribution
 
-# %%
+
 def lead_distribution(data):
     df = data['lead_time'].value_counts()
     mask = df>500
@@ -137,16 +134,16 @@ def lead_distribution(data):
     plt.grid(axis="y", linestyle="--", alpha=0.7)
     return plt
 
-# %% [markdown]
+
 # Most of the booking have lead time of less than 100 days among them majority of the booking have lead time of 0 days.
 
-# %% [markdown]
+
 # ## Building Fast API
 
-# %%
+
 nest_asyncio.apply()
 
-# %%
+
 app = FastAPI()
 
 class PlotType(str, Enum):
@@ -198,13 +195,7 @@ async def get_plot(plot: PlotType):
     return {"error": "Invalid plot type"}
 
 
-# %%
 uvicorn.run(app, host="127.0.0.1", port=8080, log_level="info")
-
-# %%
-canc_rate(data_processed)
-
-# %%
 
 
 

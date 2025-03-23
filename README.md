@@ -6,9 +6,13 @@ Developed a system that processes hotel booking data, extracts insights, and ena
 ---
 
 ## Features  
+
    ✅ Generating the analytics reports on the basis of the question asked.
+   
    ✅ Giving the insights from the data on the basis of the CSV file. 
+   
    ✅ Implemented the fast-api at the end.
+   
 ---
 ## Working 
 1. **Generating the Analytics Report** 📰
@@ -47,6 +51,6 @@ Create a `.env` file and add necessary API keys and configurations (e.g., **Groq
 final_rag.py
 final_analytics.py
 ```  
-This will start the **API for question answering on Hotel Booking Data** that will fetch, summarize, optimize, and publish news articles for any given location and any topic. 🚀    
+This will start the **API for question answering on Hotel Booking Data** that will fetch, summarize and plot of the analytics report.
 
 ---

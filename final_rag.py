@@ -52,7 +52,8 @@ def generate_sql_query(user_query):
                                 'reservation_status', 'arrival_date', 'checkout_date', 'night_stay',
                                 'Total_revenue']\n
                                 Just give the SQL query only nothing other.\n
-                                From the final SQL query remove \n.
+                                From the final SQL query remove \n
+                                For the revenue or price related thing alsways use booking that are not cancelled.
                              """),
         HumanMessage(content=user_query)  # Pass user query dynamically
     ]
